@@ -1,2 +1,2 @@
 # loveletter-for-u
-Nothing 
+infinity ♾️ 
