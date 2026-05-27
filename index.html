@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Letter for Gunjan 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffe6f0, #ffe0ff);
+  overflow: hidden;
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* Envelope */
+.envelope {
+  width: 220px;
+  height: 120px;
+  background: #fff;
+  border: 2px solid #ff1493;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition: transform 1s;
+  z-index: 2;
+}
+
+.envelope::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 60px solid #ff1493;
+  top: -60px;
+  left: 0;
+  transition: border-bottom-color 1s;
+}
+
+.envelope.open {
+  transform: rotateX(180deg);
+}
+
+.envelope.open::before {
+  border-bottom-color: #fff;
+}
+
+/* Letter */
+.letter {
+  position: absolute;
+  width: 200px;
+  height: 0;
+  top: 10px;
+  left: 10px;
+  background: #fffaf0;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0;
+  overflow-y: auto;
+  text-align: left;
+  color: #b2005b;
+  font-size: 20px;
+  transition: all 1.5s ease;
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+  line-height: 2;
+}
+
+.letter.show {
+  width: 595px;
+  height: 842px;
+  opacity: 1;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  padding: 50px;
+  font-size: 24px;
+}
+
+/* Button at the end */
+#endBtn {
+  display: none;
+  margin-top: 20px;
+  padding: 15px 25px;
+  background: #ff69b4;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,105,180,0.5);
+}
+
+/* Big pink heart */
+.big-heart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: pink;
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  z-index: 5;
+  border-radius: 0;
+}
+
+.big-heart::before,
+.big-heart::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.big-heart::before { top: -75px; left: 0; }
+.big-heart::after { left: 75px; top: 0; }
+
+.big-heart.show {
+  animation: heartAnim 3s forwards;
+}
+
+@keyframes heartAnim {
+  0% { transform: translate(-50%, -50%) rotate(45deg) scale(0); opacity: 0; }
+  50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(2); opacity: 0; }
+}
+
+/* Envelope fly-in */
+.fly {
+  animation: fly 2s ease-in-out forwards;
+}
+
+@keyframes fly {
+  0% { transform: translateY(-500px) rotate(0deg); }
+  50% { transform: translateY(50px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Typing cursor */
+.typing {
+  display: inline-block;
+  white-space: pre-wrap;
+  border-right: 2px solid #ff1493;
+  padding-right: 2px;
+  animation: blink 1s infinite step-end;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float 4s linear forwards;
+  z-index: 1;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes float {
+  0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-800px) scale(1.2) rotate(360deg); opacity: 0; }
+}
+
+/* Final "I ❤️ YOU" message */
+#loveMsg {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Great Vibes', cursive;
+  font-size: 80px;
+  color: #ff69b4;
+  text-align: center;
+  z-index: 10;
+  animation: sparkle 2s ease forwards;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="envelope" id="envelope">
+  <div class="letter" id="letter">
+    <h2>Hi Gunjan! 💌</h2>
+    <p id="message"></p>
+    <button id="endBtn">Click me ❤️</button>
+  </div>
+</div>
+
+<div class="big-heart" id="bigHeart"></div>
+<div id="loveMsg">I ❤️ YOU 💖✨</div>
+
+<script>
+const envelope = document.getElementById('envelope');
+const letter = document.getElementById('letter');
+const endBtn = document.getElementById('endBtn');
+const bigHeart = document.getElementById('bigHeart');
+const messageEl = document.getElementById('message');
+const loveMsg = document.getElementById('loveMsg');
+
+const paragraphs = [
+  "You're the kind of person who effortlessly inspires me 💗 around you with your kindness, patience, and positive energy,",
+  "Your loyalty and dedication in friendships and relationships are truly remarkable, and your ability to listen, support, and uplift others is rare to find.",
+  "Honestly, your honesty, charm, and optimism shine brightly in every interaction, and the warmth you bring to people's lives is something I deeply admire and cherish. ❤️😍💖✨"
+];
+
+let paraIndex = 0;
+let charIndex = 0;
+
+// Fly-in
+window.onload = () => {
+  envelope.classList.add('fly');
+};
+
+// Create floating hearts
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+  heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+
+// Envelope click -> show letter
+envelope.addEventListener('click', () => {
+  envelope.classList.toggle('open');
+  setTimeout(() => {
+    letter.classList.add('show');
+    endBtn.style.display = 'block';
+    paraIndex = 0; charIndex = 0;
+    messageEl.innerHTML = '';
+    typeParagraph();
+    const heartInterval = setInterval(() => createHeart(), 300);
+    setTimeout(() => clearInterval(heartInterval), 6000);
+  }, 800);
+});
+
+// Typing effect per paragraph
+function typeParagraph() {
+  if (paraIndex < paragraphs.length) {
+    const paragraph = paragraphs[paraIndex];
+    if (charIndex < paragraph.length) {
+      messageEl.innerHTML += paragraph[charIndex];
+      charIndex++;
+      setTimeout(typeParagraph, 50);
+    } else {
+      messageEl.innerHTML += "<br><br>";
+      paraIndex++; charIndex = 0;
+      setTimeout(typeParagraph, 300);
+    }
+  }
+}
+
+// End button click -> hide letter, show big heart and then I ❤️ YOU
+endBtn.addEventListener('click', () => {
+  envelope.style.display = 'none';
+  letter.style.display = 'none';
+  endBtn.style.display = 'none';
+  bigHeart.classList.add('show');
+  setTimeout(() => {
+    bigHeart.classList.remove('show');
+    loveMsg.style.display = 'block';
+  }, 3000);
+});
+</script>
+
+</body>
+</html>
